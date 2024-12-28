@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+
+// eslint-disable-next-line no-unused-vars
 import { addDoc, collection } from 'firebase/firestore';
+// eslint-disable-next-line no-unused-vars
 import { db } from '../utils/firebase';
 
 const InsertScreen = () => {

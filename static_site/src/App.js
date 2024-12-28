@@ -25,10 +25,9 @@ function App() {
     const provider = new GoogleAuthProvider();
     try {
       const result = await signInWithPopup(auth, provider);
-      setUser(result.user); // Set the signed-in user
+      setUser(result.user);
     } catch (error) {
       console.error("Error during Google Sign-In:", error.message);
-      alert("Sign-in failed. Please try again.");
     }
   };
 
@@ -36,15 +35,9 @@ function App() {
     try {
       await signOut(auth);
       setUser(null);
-      alert("You have signed out.");
     } catch (error) {
       console.error("Error signing out:", error.message);
     }
-  };
-
-  const formatDate = () => {
-    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-    return new Date().toLocaleDateString('en-US', options);
   };
 
   const renderScreen = () => {
@@ -56,10 +49,9 @@ function App() {
 
   return (
     <div className="App">
+      {/* Ensure Header is Rendered Once */}
       <Header user={user} onSignOut={handleSignOut} onNavigate={setCurrentScreen} />
-      <header className="App-header">
-        <h1>Todd Bernson's 2024 Fitness Goals Dashboard</h1>
-        <h2>{formatDate()}</h2>
+      <main>
         {isLoading ? (
           <p>Loading...</p>
         ) : user ? (
@@ -67,7 +59,7 @@ function App() {
         ) : (
           <button onClick={handleSignIn}>Sign in with Google</button>
         )}
-      </header>
+      </main>
     </div>
   );
 }

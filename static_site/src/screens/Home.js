@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { fetchFitnessData } from "../utils/api";
-import Header from "../components/Header";
 import ExerciseList from "../components/ExerciseList";
+import ProgressBarGraph from "../components/ProgressBarGraph";
 
 const Home = () => {
   const [data, setData] = useState([]);
@@ -12,7 +12,6 @@ const Home = () => {
       const result = await fetchFitnessData();
       setData(result);
 
-      // Find "total_lifted"
       const totalLiftedData = result.find(
         (exercise) => exercise.exercise_name === "total_lifted"
       );
@@ -26,10 +25,14 @@ const Home = () => {
     (exercise) => exercise.exercise_name !== "total_lifted"
   );
 
+  // Calculate days into the year
+  const currentDate = new Date();
+  const startOfYear = new Date(currentDate.getFullYear(), 0, 1);
+  const daysIntoYear = Math.ceil((currentDate - startOfYear) / (1000 * 60 * 60 * 24));
+
   return (
     <div>
-      <Header date={new Date().toLocaleDateString()} />
-      <h3>Total Lifted: {totalLifted.toLocaleString()} pounds</h3>
+      <ProgressBarGraph totalLifted={totalLifted} daysIntoYear={daysIntoYear} />
       <ExerciseList exercises={exercises} />
     </div>
   );
