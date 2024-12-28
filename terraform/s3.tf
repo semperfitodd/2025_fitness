@@ -31,7 +31,7 @@ locals {
     "txt"  = "text/plain"
   }
 
-  static_html_directory = "../static_site/"
+  static_html_directory = "../static_site/build/"
 }
 
 module "site_s3_bucket" {
