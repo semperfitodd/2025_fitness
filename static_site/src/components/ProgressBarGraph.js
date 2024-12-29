@@ -10,7 +10,6 @@ import {
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 
-// Register components
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
 const ProgressBarGraph = ({ totalLifted, daysIntoYear }) => {
@@ -32,7 +31,7 @@ const ProgressBarGraph = ({ totalLifted, daysIntoYear }) => {
 
   const options = {
     responsive: true,
-    indexAxis: 'y', // Horizontal bars
+    indexAxis: 'y',
     maintainAspectRatio: false,
     scales: {
       x: {

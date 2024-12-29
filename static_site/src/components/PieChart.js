@@ -7,18 +7,13 @@ import {
 } from 'chart.js';
 import { Pie } from 'react-chartjs-2';
 
-// Register components
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const PieChart = ({ exercises }) => {
-  // Extract exercise names and weights
   const labels = Object.keys(exercises);
   const dataValues = Object.values(exercises);
 
-  // Dynamic color assignment with an extended palette
   const colorPalette = [
-    '#FF5733', '#33FF57', '#3357FF', '#FF33A8', '#33FFF2', '#FF8C33', '#A833FF', '#33FF8C', '#FF3333',
-    '#33FFDD', '#FFC300', '#DAF7A6', '#C70039', '#900C3F', '#581845', '#FFC0CB', '#FFD700', '#40E0D0',
     '#FF5733', '#33FF57', '#3357FF', '#FF33A8', '#33FFF2', '#FF8C33', '#A833FF', '#33FF8C', '#FF3333',
     '#33FFDD', '#FFC300', '#DAF7A6', '#C70039', '#900C3F', '#581845', '#FFC0CB', '#FFD700', '#40E0D0',
   ];
@@ -31,7 +26,6 @@ const PieChart = ({ exercises }) => {
     backgroundColors[index]
   );
 
-  // Prepare the data for the Pie chart
   const data = {
     labels,
     datasets: [
@@ -48,7 +42,7 @@ const PieChart = ({ exercises }) => {
     responsive: true,
     plugins: {
       legend: {
-        position: 'right', // Position the legend to the right
+        position: 'right',
       },
       tooltip: {
         callbacks: {
