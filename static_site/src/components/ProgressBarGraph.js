@@ -23,8 +23,8 @@ const ProgressBarGraph = ({ totalLifted, daysIntoYear }) => {
       {
         label: 'Progress (%)',
         data: [totalLiftedPercentage, daysIntoYearPercentage],
-        backgroundColor: ['#0078d4', '#003d80'],
-        borderColor: ['#0056b3', '#001f4d'],
+        backgroundColor: ['#FFFF00', '#FF0000'],
+        borderColor: ['#B2B200', '#B20000'],
         borderWidth: 1,
       },
     ],

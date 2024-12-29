@@ -10,27 +10,22 @@ const InsertScreen = () => {
   const [date, setDate] = useState(new Date().toISOString().split('T')[0]); // Default to today’s date
   const [rows, setRows] = useState([{ exercise: '', weight: 0, reps: 0 }]); // Initial row
 
-  // Handle changes in the date input
   const handleDateChange = (e) => {
     setDate(e.target.value); // Update the state with the selected date
   };
 
-  // Handle changes in input fields
   const handleChange = (index, field, value) => {
     const updatedRows = [...rows];
     updatedRows[index][field] = value;
     setRows(updatedRows);
   };
 
-  // Add a new empty row
   const handleAddRow = () => {
     setRows([...rows, { exercise: '', weight: 0, reps: 0 }]);
   };
 
-  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     const formattedData = {
       date,
       exercises: rows.map((row) => ({
@@ -41,92 +36,120 @@ const InsertScreen = () => {
     };
 
     try {
-      // Send to API Gateway
       await axios.post('/post', formattedData, {
         headers: {
           'Content-Type': 'application/json',
           'x-api-key': process.env.REACT_APP_API_KEY,
         },
       });
-      console.log('Data sent to API Gateway successfully.');
-
-      alert('Records submitted successfully to both Firebase and API Gateway!');
-      setRows([{ exercise: '', weight: 0, reps: 0 }]); // Reset rows
+      alert('Records submitted successfully!');
+      setRows([{ exercise: '', weight: 0, reps: 0 }]);
     } catch (error) {
       console.error('Error submitting records:', error);
-      alert('Failed to submit records. Check the console for details.');
+      alert('Failed to submit records.');
     }
   };
 
   return (
-    <div style={{ textAlign: 'center', marginTop: '50px' }}>
+    <div style={{ textAlign: 'center', marginTop: '20px' }}>
       <h2>Insert New Records</h2>
-      <form onSubmit={handleSubmit}>
-        {/* Date Picker */}
-        <label>
+      <form onSubmit={handleSubmit} style={{ width: '70%', margin: '0 auto' }}>
+        <label style={{ display: 'block', marginBottom: '10px' }}>
           Date:
           <input
             type="date"
             value={date}
             onChange={handleDateChange}
+            style={{ marginLeft: '10px' }}
             required
           />
         </label>
-
-        {/* Exercise Table */}
-        <table style={{ margin: '0 auto', borderCollapse: 'collapse', width: '80%' }}>
-          <thead>
-            <tr>
-              <th>Exercise</th>
-              <th>Weight (lbs)</th>
-              <th>Reps</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            {rows.map((row, index) => (
-              <tr key={index}>
-                <td>
-                  <input
-                    type="text"
-                    value={row.exercise}
-                    onChange={(e) => handleChange(index, 'exercise', e.target.value)}
-                    placeholder="Exercise name"
-                    required
-                  />
-                </td>
-                <td>
-                  <input
-                    type="number"
-                    value={row.weight}
-                    onChange={(e) => handleChange(index, 'weight', e.target.value)}
-                    placeholder="Weight"
-                    required
-                  />
-                </td>
-                <td>
-                  <input
-                    type="number"
-                    value={row.reps}
-                    onChange={(e) => handleChange(index, 'reps', e.target.value)}
-                    placeholder="Reps"
-                    required
-                  />
-                </td>
-                <td>
-                  {index === rows.length - 1 ? (
-                    <button type="button" onClick={handleAddRow}>
-                      Add
-                    </button>
-                  ) : null}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-
-        {/* Submit Button */}
-        <button type="submit" style={{ marginTop: '20px' }}>
+        <div style={{ marginBottom: '20px' }}>
+          {rows.map((row, index) => (
+            <div
+              key={index}
+              style={{
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+                gap: '10px',
+                marginBottom: '10px',
+              }}
+            >
+              <input
+                type="text"
+                value={row.exercise}
+                onChange={(e) => handleChange(index, 'exercise', e.target.value)}
+                placeholder="Exercise name"
+                required
+                style={{
+                  flex: 2,
+                  padding: '10px',
+                  fontSize: '16px',
+                  borderRadius: '5px',
+                  border: '1px solid #ccc',
+                }}
+              />
+              <input
+                type="number"
+                value={row.weight}
+                onChange={(e) => handleChange(index, 'weight', e.target.value)}
+                placeholder="Weight (lbs)"
+                required
+                style={{
+                  flex: 1,
+                  padding: '10px',
+                  fontSize: '16px',
+                  borderRadius: '5px',
+                  border: '1px solid #ccc',
+                }}
+              />
+              <input
+                type="number"
+                value={row.reps}
+                onChange={(e) => handleChange(index, 'reps', e.target.value)}
+                placeholder="Reps"
+                required
+                style={{
+                  flex: 1,
+                  padding: '10px',
+                  fontSize: '16px',
+                  borderRadius: '5px',
+                  border: '1px solid #ccc',
+                }}
+              />
+              {index === rows.length - 1 && (
+                <button
+                  type="button"
+                  onClick={handleAddRow}
+                  style={{
+                    flex: 1,
+                    padding: '10px',
+                    fontSize: '16px',
+                    backgroundColor: '#0078d4',
+                    color: 'white',
+                    border: 'none',
+                    borderRadius: '5px',
+                  }}
+                >
+                  Add
+                </button>
+              )}
+            </div>
+          ))}
+        </div>
+        <button
+          type="submit"
+          style={{
+            backgroundColor: '#0078d4',
+            color: 'white',
+            border: 'none',
+            padding: '10px 20px',
+            borderRadius: '5px',
+            fontSize: '16px',
+            marginTop: '10px',
+          }}
+        >
           Submit
         </button>
       </form>
