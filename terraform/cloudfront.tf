@@ -74,6 +74,16 @@ module "cdn" {
 
   ordered_cache_behavior = [
     {
+      path_pattern           = "/claude"
+      target_origin_id       = "api_gw"
+      viewer_protocol_policy = "redirect-to-https"
+
+      allowed_methods = ["GET", "HEAD", "OPTIONS", "POST", "DELETE", "PUT", "PATCH"]
+      cached_methods  = ["GET", "HEAD"]
+      compress        = true
+      query_string    = true
+    },
+    {
       path_pattern           = "/get"
       target_origin_id       = "api_gw"
       viewer_protocol_policy = "redirect-to-https"

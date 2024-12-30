@@ -42,6 +42,15 @@ module "api_gateway" {
   }
 
   routes = {
+    "GET /claude" = {
+      authorization_type = "CUSTOM"
+      authorizer_key     = "lambda"
+      integration = {
+        method                 = "GET"
+        uri                    = module.lambda_bedrock.lambda_function_arn
+        payload_format_version = "1.0"
+      }
+    }
     "POST /get" = {
       authorization_type = "CUSTOM"
       authorizer_key     = "lambda"

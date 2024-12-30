@@ -1,11 +1,11 @@
-import React, {useEffect, useState} from 'react';
-import {fetchFitnessData} from '../utils/api';
+import React, { useEffect, useState } from 'react';
+import { fetchFitnessData } from '../utils/api';
 import ProgressBarGraph from '../components/ProgressBarGraph';
 import PieChart from '../components/PieChart';
-import {getDefaultDate} from '../utils/dateUtils';
-import {toTitleCase} from '../utils/stringUtils';
+import { getDefaultDate } from '../utils/dateUtils';
+import { toTitleCase } from '../utils/stringUtils';
 
-const Home = ({user}) => {
+const Home = ({ user }) => {
     const [totalLifted, setTotalLifted] = useState(0);
     const [exerciseData, setExerciseData] = useState({});
 
@@ -31,7 +31,6 @@ const Home = ({user}) => {
         loadData();
     }, [user]);
 
-
     const currentDate = new Date(getDefaultDate());
     const startOfYear = new Date(currentDate.getFullYear(), 0, 1);
     const daysIntoYear = Math.ceil((currentDate - startOfYear) / (1000 * 60 * 60 * 24));
@@ -41,10 +40,10 @@ const Home = ({user}) => {
             <h2 className="progress-title">Progress Overview</h2>
             <div className="chart-container-wrapper">
                 <div className="chart-item">
-                    <ProgressBarGraph totalLifted={totalLifted} daysIntoYear={daysIntoYear}/>
+                    <ProgressBarGraph totalLifted={totalLifted} daysIntoYear={daysIntoYear} />
                 </div>
                 <div className="chart-item">
-                    <PieChart exercises={exerciseData}/>
+                    <PieChart exercises={exerciseData} />
                 </div>
             </div>
         </div>

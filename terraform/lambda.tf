@@ -93,6 +93,48 @@ module "lambda_authorizer" {
   tags = var.tags
 }
 
+module "lambda_bedrock" {
+  source  = "terraform-aws-modules/lambda/aws"
+  version = "7.17.0"
+
+  function_name = "${var.environment}_bedrock"
+  description   = "Function to interact with bedrock"
+  handler       = "app.lambda_handler"
+  publish       = true
+  runtime       = "python3.13"
+  timeout       = 60
+
+  source_path = [
+    {
+      path             = "${path.module}/lambda_bedrock"
+      pip_requirements = false
+    }
+  ]
+
+  attach_policies = true
+  policies        = ["arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"]
+
+  attach_policy_statements = true
+  policy_statements = {
+    bedrock = {
+      effect = "Allow",
+      actions = ["bedrock:InvokeModel"],
+      resources = ["*"]
+    }
+  }
+
+  allowed_triggers = {
+    AllowExecutionFromAPIGateway = {
+      service    = "apigateway"
+      source_arn = "${module.api_gateway.api_execution_arn}/*/*"
+    }
+  }
+
+  cloudwatch_logs_retention_in_days = 3
+
+  tags = var.tags
+}
+
 module "lambda_get" {
   source  = "terraform-aws-modules/lambda/aws"
   version = "7.17.0"

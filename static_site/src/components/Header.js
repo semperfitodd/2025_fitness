@@ -1,6 +1,6 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 
-const Header = ({user, onSignOut, onNavigate}) => {
+const Header = ({ user, onSignOut, onNavigate }) => {
     const [menuOpen, setMenuOpen] = useState(false);
 
     const toggleMenu = () => {
@@ -18,22 +18,24 @@ const Header = ({user, onSignOut, onNavigate}) => {
                 <button onClick={() => {
                     toggleMenu();
                     onNavigate('home');
-                }}>Home
-                </button>
+                }}>Home</button>
                 <button onClick={() => {
                     toggleMenu();
                     onNavigate('insert');
-                }}>Insert
-                </button>
+                }}>Insert</button>
+                <button onClick={() => {
+                    toggleMenu();
+                    onNavigate('generate-workout');
+                }}>Workout</button>
                 <button onClick={() => {
                     toggleMenu();
                     onSignOut();
-                }}>Sign out
-                </button>
+                }}>Sign out</button>
             </nav>
             <div className="desktop-nav">
                 <button onClick={() => onNavigate('home')}>Home</button>
                 <button onClick={() => onNavigate('insert')}>Insert</button>
+                <button onClick={() => onNavigate('generate-workout')}>Workout</button>
                 <button onClick={onSignOut}>Sign out</button>
             </div>
         </header>
