@@ -1,13 +1,13 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 // eslint-disable-next-line no-unused-vars
 import { addDoc, collection } from 'firebase/firestore';
 // eslint-disable-next-line no-unused-vars
 import { db } from '../utils/firebase';
 
-const InsertScreen = ({setCurrentScreen}) => {
+const InsertScreen = ({ setCurrentScreen, user }) => {
     const [date, setDate] = useState(new Date().toISOString().split('T')[0]);
-    const [rows, setRows] = useState([{exercise: '', weight: 0, reps: 0}]);
+    const [rows, setRows] = useState([{ exercise: '', weight: 0, reps: 0 }]);
     const [expandedIndex, setExpandedIndex] = useState(null);
 
     const handleDateChange = (e) => {
@@ -21,12 +21,20 @@ const InsertScreen = ({setCurrentScreen}) => {
     };
 
     const handleAddRow = () => {
-        setRows([...rows, {exercise: '', weight: 0, reps: 0}]);
+        setRows([...rows, { exercise: '', weight: 0, reps: 0 }]);
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        // Ensure the user is available before submitting
+        if (!user || !user.email) {
+            alert('User information is missing. Please log in again.');
+            return;
+        }
+
         const formattedData = {
+            user: user.email, // Add user email to the payload
             date,
             exercises: rows.map((row) => ({
                 name: row.exercise,
@@ -36,18 +44,23 @@ const InsertScreen = ({setCurrentScreen}) => {
         };
 
         try {
-            await axios.post('/post', formattedData, {
-                headers: {
-                    'Content-Type': 'application/json',
-                    'x-api-key': process.env.REACT_APP_API_KEY,
-                },
-            });
-            alert('Records submitted successfully!');
-            setRows([{exercise: '', weight: 0, reps: 0}]);
+            const response = await axios.post(
+                'https://fitness.bernson.info/post',
+                formattedData,
+                {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'x-api-key': process.env.REACT_APP_API_KEY,
+                    },
+                }
+            );
+            alert(`Records submitted successfully!\n${JSON.stringify(response.data, null, 2)}`);
+            setRows([{ exercise: '', weight: 0, reps: 0 }]);
             setExpandedIndex(null);
             setCurrentScreen('home'); // Navigate back to the home screen
         } catch (error) {
-            alert('Failed to submit records.');
+            console.error('Error submitting records:', error);
+            alert('Failed to submit records. Please try again.');
         }
     };
 

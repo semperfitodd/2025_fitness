@@ -3,6 +3,11 @@ resource "aws_dynamodb_table" "raw_data" {
   billing_mode = "PAY_PER_REQUEST"
 
   attribute {
+    name = "user"
+    type = "S"
+  }
+
+  attribute {
     name = "date"
     type = "S"
   }
@@ -12,8 +17,8 @@ resource "aws_dynamodb_table" "raw_data" {
     type = "S"
   }
 
-  hash_key  = "date"
-  range_key = "exercise"
+  hash_key  = "user"
+  range_key = "date"
 
   global_secondary_index {
     name            = "exercise-date-index"
@@ -33,11 +38,17 @@ resource "aws_dynamodb_table" "aggregates" {
   billing_mode = "PAY_PER_REQUEST"
 
   attribute {
+    name = "user"
+    type = "S"
+  }
+
+  attribute {
     name = "exercise_name"
     type = "S"
   }
 
-  hash_key = "exercise_name"
+  hash_key = "user"
+  range_key = "exercise_name"
 
   tags = var.tags
 }

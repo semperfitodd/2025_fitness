@@ -5,7 +5,7 @@ data "aws_route53_zone" "public" {
 }
 
 locals {
-  domain_name = "${replace(var.environment, "_", "")}.${var.domain}"
+  domain_name = "fitness.${var.domain}"
 }
 
 module "cdn" {

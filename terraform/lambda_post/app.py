@@ -34,13 +34,13 @@ def calculate_volume(exercises):
     return total_volume, exercise_volumes, exercise_reps
 
 
-def update_aggregates(exercise_volumes, exercise_reps, total_volume):
+def update_aggregates(user, exercise_volumes, exercise_reps, total_volume):
     logger.info("Updating aggregates table.")
     for exercise_name, volume in exercise_volumes.items():
         reps = exercise_reps[exercise_name]
-        logger.info(f"Updating aggregate for exercise: {exercise_name}, Volume: {volume}, Reps: {reps}")
+        logger.info(f"Updating aggregate for user: {user}, exercise: {exercise_name}, Volume: {volume}, Reps: {reps}")
         aggregates_table.update_item(
-            Key={'exercise_name': exercise_name},
+            Key={'user': user, 'exercise_name': exercise_name},
             UpdateExpression="ADD total_volume :v, total_reps :r",
             ExpressionAttributeValues={
                 ':v': Decimal(str(volume)),
@@ -48,9 +48,9 @@ def update_aggregates(exercise_volumes, exercise_reps, total_volume):
             }
         )
 
-    logger.info(f"Updating total_lifted with volume: {total_volume}")
+    logger.info(f"Updating total_lifted for user: {user} with volume: {total_volume}")
     aggregates_table.update_item(
-        Key={'exercise_name': 'total_lifted'},
+        Key={'user': user, 'exercise_name': 'total_lifted'},
         UpdateExpression="ADD total_volume :v",
         ExpressionAttributeValues={
             ':v': Decimal(str(total_volume))
@@ -63,21 +63,25 @@ def lambda_handler(event, context):
         logger.info("Received event: %s", event)
         body = json.loads(event['body'])
 
+        user = body.get('user')
+        if not user:
+            raise ValueError("User is required in the payload.")
+
         date = body.get('date')
         exercises = body['exercises']
 
-        logger.info("Processing exercises for date: %s", date)
+        logger.info("Processing exercises for user: %s, date: %s", user, date)
 
-        existing_data = raw_data_table.get_item(Key={'date': date, 'exercise': 'DAILY_SUMMARY'})
+        existing_data = raw_data_table.get_item(Key={'user': user, 'date': date})
         if 'Item' in existing_data:
-            logger.info("Found existing data for the same date. Adjusting aggregates.")
+            logger.info("Found existing data for the same user and date. Adjusting aggregates.")
             previous_exercise_volumes = existing_data['Item']['exercise_volumes']
             previous_exercise_reps = existing_data['Item']['exercise_reps']
 
             for exercise_name, previous_volume in previous_exercise_volumes.items():
                 previous_reps = previous_exercise_reps[exercise_name]
                 aggregates_table.update_item(
-                    Key={'exercise_name': exercise_name},
+                    Key={'user': user, 'exercise_name': exercise_name},
                     UpdateExpression="ADD total_volume :v, total_reps :r",
                     ExpressionAttributeValues={
                         ':v': Decimal(str(-float(previous_volume))),
@@ -87,7 +91,7 @@ def lambda_handler(event, context):
 
             previous_total_volume = existing_data['Item']['total_volume']
             aggregates_table.update_item(
-                Key={'exercise_name': 'total_lifted'},
+                Key={'user': user, 'exercise_name': 'total_lifted'},
                 UpdateExpression="ADD total_volume :v",
                 ExpressionAttributeValues={
                     ':v': Decimal(str(-float(previous_total_volume)))
@@ -97,6 +101,7 @@ def lambda_handler(event, context):
         total_volume, exercise_volumes, exercise_reps = calculate_volume(exercises)
 
         raw_data_item = {
+            'user': user,
             'date': date,
             'exercise': 'DAILY_SUMMARY',
             'raw_exercises': exercises,
@@ -107,12 +112,13 @@ def lambda_handler(event, context):
         raw_data_table.put_item(Item=raw_data_item)
         logger.info("Successfully wrote raw data to table.")
 
-        update_aggregates(exercise_volumes, exercise_reps, total_volume)
+        update_aggregates(user, exercise_volumes, exercise_reps, total_volume)
 
         return {
             'statusCode': 200,
             'body': json.dumps({
                 'message': 'Workout recorded successfully',
+                'user': user,
                 'date': date,
                 'total_volume': float(total_volume),
                 'exercise_volumes': {k: float(v) for k, v in exercise_volumes.items()},

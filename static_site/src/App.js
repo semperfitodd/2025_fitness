@@ -42,15 +42,14 @@ function App() {
 
     const renderScreen = () => {
         if (currentScreen === 'insert') {
-            return <InsertScreen setCurrentScreen={setCurrentScreen}/>;
+            return <InsertScreen setCurrentScreen={setCurrentScreen} user={user}/>;
         }
-        return <Home/>;
+        return <Home user={user}/>;
     };
 
 
     return (
         <div className="App">
-            {/* Ensure Header is Rendered Once */}
             <Header user={user} onSignOut={handleSignOut} onNavigate={setCurrentScreen}/>
             <main>
                 {isLoading ? (

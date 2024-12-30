@@ -5,31 +5,32 @@ import PieChart from '../components/PieChart';
 import {getDefaultDate} from '../utils/dateUtils';
 import {toTitleCase} from '../utils/stringUtils';
 
-const Home = () => {
+const Home = ({user}) => {
     const [totalLifted, setTotalLifted] = useState(0);
     const [exerciseData, setExerciseData] = useState({});
 
     useEffect(() => {
         const loadData = async () => {
-            const result = await fetchFitnessData();
+            if (!user) return;
 
-            const totalLiftedData = result.find(
-                (exercise) => exercise.exercise_name === 'total_lifted'
-            );
-            setTotalLifted(totalLiftedData?.total_volume || 0);
+            const result = await fetchFitnessData(user.email);
+            if (!result) {
+                console.error("Failed to load data from the API.");
+                return;
+            }
+
+            setTotalLifted(result.total_lifted || 0);
 
             const exercises = {};
-            result.forEach((entry) => {
-                if (entry.exercise_name !== 'total_lifted' && entry.total_volume) {
-                    const titleCasedName = toTitleCase(entry.exercise_name);
-                    exercises[titleCasedName] = entry.total_volume;
-                }
-            });
+            for (const [exerciseName, data] of Object.entries(result.exercise_data || {})) {
+                exercises[toTitleCase(exerciseName)] = data.total_volume;
+            }
             setExerciseData(exercises);
         };
 
         loadData();
-    }, []);
+    }, [user]);
+
 
     const currentDate = new Date(getDefaultDate());
     const startOfYear = new Date(currentDate.getFullYear(), 0, 1);

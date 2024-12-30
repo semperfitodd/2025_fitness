@@ -42,11 +42,11 @@ module "api_gateway" {
   }
 
   routes = {
-    "GET /get" = {
+    "POST /get" = {
       authorization_type = "CUSTOM"
       authorizer_key     = "lambda"
       integration = {
-        method                 = "GET"
+        method                 = "POST"
         uri                    = module.lambda_get.lambda_function_arn
         payload_format_version = "1.0"
       }

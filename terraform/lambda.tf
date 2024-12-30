@@ -122,7 +122,7 @@ module "lambda_get" {
   policy_statements = {
     dynamodb = {
       effect    = "Allow",
-      actions   = ["dynamodb:Scan"],
+      actions   = ["dynamodb:Query"],
       resources = [aws_dynamodb_table.aggregates.arn]
     }
   }
