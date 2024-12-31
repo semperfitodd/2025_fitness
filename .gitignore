@@ -7,7 +7,8 @@
 **/node_modules/*
 
 # secrets
-**/firebaseConfig.js
+**/Secrets.plist
+**/GoogleService-Info.plist
 
 # .tfstate static_site
 *.tfstate
@@ -26,19 +27,12 @@ plan.out
 # Mac OS
 .DS_Store
 
-# Node modules
-node_modules/
-
 # Logs
 logs
 *.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-
-# Dependency directories
-**/node_modules/*
-jspm_packages/
 
 # Testing
 coverage/
@@ -67,7 +61,6 @@ fastlane/screenshots
 *.ear
 
 # Mac OS
-.DS_Store
 .DS_Store?
 ._*
 .Spotlight-V100
@@ -84,10 +77,6 @@ metro.config.js
 # Ruby
 *.bundle/
 
-# Specific files and directories to exclude
-../2024_fitness_goals_ios/fitnessapp_ios/jest.config.js
-../2024_fitness_goals_ios/fitnessapp_ios/metro.config.js
-../2024_fitness_goals_ios/fitnessapp_ios/package-lock.json
-../2024_fitness_goals_ios/fitnessapp_ios/tsconfig.json
-
-**/GoogleService-Info.plist
+# Pods
+**/Podfile.lock
+**/Pods/*

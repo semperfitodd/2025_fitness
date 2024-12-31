@@ -1,0 +1,29 @@
+# Define the platform for your project
+platform :ios, '18.0'
+
+target '2025 Volume Fitness Tracker' do
+  # Use dynamic frameworks
+  use_frameworks!
+
+  # Add Firebase dependencies
+  pod 'Firebase/Auth'
+  pod 'Firebase/Core'
+
+  # Add Google Sign-In dependency
+  pod 'GoogleSignIn'
+  pod 'GoogleSignInSwiftSupport'
+
+  # Add Charts library
+  pod 'DGCharts'
+
+  # Pods for your unit tests
+  target '2025 Volume Fitness TrackerTests' do
+    inherit! :search_paths
+    # Add testing-related dependencies if required
+  end
+
+  # Pods for your UI tests
+  target '2025 Volume Fitness TrackerUITests' do
+    # Add UI testing-related dependencies if required
+  end
+end
