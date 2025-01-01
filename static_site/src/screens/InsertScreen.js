@@ -54,7 +54,15 @@ const InsertScreen = ({ setCurrentScreen, user }) => {
                     },
                 }
             );
-            alert(`Records submitted successfully!\n${JSON.stringify(response.data, null, 2)}`);
+
+            // Calculate the total lbs lifted for the day
+            const totalLbsLifted = formattedData.exercises.reduce(
+                (total, exercise) => total + (exercise.weight * exercise.reps),
+                0
+            );
+
+            alert(`Records submitted successfully! Total lifted today: ${totalLbsLifted.toLocaleString()} lbs.`);
+
             setRows([{ exercise: '', weight: 0, reps: 0 }]);
             setExpandedIndex(null);
             setCurrentScreen('home'); // Navigate back to the home screen
