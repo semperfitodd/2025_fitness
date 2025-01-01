@@ -1,0 +1,718 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4EEADF1969F2FF7CEBE86911 /* Pods_volume_fitness_trackerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45A81E665107D22F4BFE8EEE /* Pods_volume_fitness_trackerTests.framework */; };
+		CA5E39C6DC4EE2673F574A64 /* Pods_volume_fitness_tracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CEB1B8C499297F72C162C06 /* Pods_volume_fitness_tracker.framework */; };
+		F21F06C0EAFB7B76968AC220 /* Pods_volume_fitness_tracker_volume_fitness_trackerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A746B6748B1E023B4AFFE633 /* Pods_volume_fitness_tracker_volume_fitness_trackerUITests.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		5F24E3D22D25D0E10030885E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5F24E3B92D25D0DF0030885E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5F24E3C02D25D0DF0030885E;
+			remoteInfo = volume_fitness_tracker;
+		};
+		5F24E3DC2D25D0E10030885E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5F24E3B92D25D0DF0030885E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5F24E3C02D25D0DF0030885E;
+			remoteInfo = volume_fitness_tracker;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		29A85E700FE553F1CDEA9A96 /* Pods-volume_fitness_trackerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-volume_fitness_trackerTests.release.xcconfig"; path = "Target Support Files/Pods-volume_fitness_trackerTests/Pods-volume_fitness_trackerTests.release.xcconfig"; sourceTree = "<group>"; };
+		45A81E665107D22F4BFE8EEE /* Pods_volume_fitness_trackerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_volume_fitness_trackerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		59BAC6BBB3AFE491C74E8BFE /* Pods-volume_fitness_tracker-volume_fitness_trackerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-volume_fitness_tracker-volume_fitness_trackerUITests.debug.xcconfig"; path = "Target Support Files/Pods-volume_fitness_tracker-volume_fitness_trackerUITests/Pods-volume_fitness_tracker-volume_fitness_trackerUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		5CEB1B8C499297F72C162C06 /* Pods_volume_fitness_tracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_volume_fitness_tracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5F24E3C12D25D0DF0030885E /* volume_fitness_tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = volume_fitness_tracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5F24E3D12D25D0E10030885E /* volume_fitness_trackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = volume_fitness_trackerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5F24E3DB2D25D0E10030885E /* volume_fitness_trackerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = volume_fitness_trackerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		671538208AAC862B3FF1C518 /* Pods-volume_fitness_tracker-volume_fitness_trackerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-volume_fitness_tracker-volume_fitness_trackerUITests.release.xcconfig"; path = "Target Support Files/Pods-volume_fitness_tracker-volume_fitness_trackerUITests/Pods-volume_fitness_tracker-volume_fitness_trackerUITests.release.xcconfig"; sourceTree = "<group>"; };
+		7D745529E1E403B81F09A79D /* Pods-volume_fitness_tracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-volume_fitness_tracker.debug.xcconfig"; path = "Target Support Files/Pods-volume_fitness_tracker/Pods-volume_fitness_tracker.debug.xcconfig"; sourceTree = "<group>"; };
+		895FDDA9D600D12F41A5571D /* Pods-volume_fitness_trackerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-volume_fitness_trackerTests.debug.xcconfig"; path = "Target Support Files/Pods-volume_fitness_trackerTests/Pods-volume_fitness_trackerTests.debug.xcconfig"; sourceTree = "<group>"; };
+		8E39BEAA31D51F65382506D8 /* Pods-volume_fitness_tracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-volume_fitness_tracker.release.xcconfig"; path = "Target Support Files/Pods-volume_fitness_tracker/Pods-volume_fitness_tracker.release.xcconfig"; sourceTree = "<group>"; };
+		A746B6748B1E023B4AFFE633 /* Pods_volume_fitness_tracker_volume_fitness_trackerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_volume_fitness_tracker_volume_fitness_trackerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		5F24E3C32D25D0DF0030885E /* volume_fitness_tracker */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = volume_fitness_tracker;
+			sourceTree = "<group>";
+		};
+		5F24E3D42D25D0E10030885E /* volume_fitness_trackerTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = volume_fitness_trackerTests;
+			sourceTree = "<group>";
+		};
+		5F24E3DE2D25D0E10030885E /* volume_fitness_trackerUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = volume_fitness_trackerUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5F24E3BE2D25D0DF0030885E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CA5E39C6DC4EE2673F574A64 /* Pods_volume_fitness_tracker.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5F24E3CE2D25D0E10030885E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4EEADF1969F2FF7CEBE86911 /* Pods_volume_fitness_trackerTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5F24E3D82D25D0E10030885E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F21F06C0EAFB7B76968AC220 /* Pods_volume_fitness_tracker_volume_fitness_trackerUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		10AD4077E871644DA8D0EAA3 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7D745529E1E403B81F09A79D /* Pods-volume_fitness_tracker.debug.xcconfig */,
+				8E39BEAA31D51F65382506D8 /* Pods-volume_fitness_tracker.release.xcconfig */,
+				59BAC6BBB3AFE491C74E8BFE /* Pods-volume_fitness_tracker-volume_fitness_trackerUITests.debug.xcconfig */,
+				671538208AAC862B3FF1C518 /* Pods-volume_fitness_tracker-volume_fitness_trackerUITests.release.xcconfig */,
+				895FDDA9D600D12F41A5571D /* Pods-volume_fitness_trackerTests.debug.xcconfig */,
+				29A85E700FE553F1CDEA9A96 /* Pods-volume_fitness_trackerTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		46CCC1DC6F29D0C28C95EBDB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5CEB1B8C499297F72C162C06 /* Pods_volume_fitness_tracker.framework */,
+				A746B6748B1E023B4AFFE633 /* Pods_volume_fitness_tracker_volume_fitness_trackerUITests.framework */,
+				45A81E665107D22F4BFE8EEE /* Pods_volume_fitness_trackerTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5F24E3B82D25D0DF0030885E = {
+			isa = PBXGroup;
+			children = (
+				5F24E3C32D25D0DF0030885E /* volume_fitness_tracker */,
+				5F24E3D42D25D0E10030885E /* volume_fitness_trackerTests */,
+				5F24E3DE2D25D0E10030885E /* volume_fitness_trackerUITests */,
+				5F24E3C22D25D0DF0030885E /* Products */,
+				10AD4077E871644DA8D0EAA3 /* Pods */,
+				46CCC1DC6F29D0C28C95EBDB /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		5F24E3C22D25D0DF0030885E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5F24E3C12D25D0DF0030885E /* volume_fitness_tracker.app */,
+				5F24E3D12D25D0E10030885E /* volume_fitness_trackerTests.xctest */,
+				5F24E3DB2D25D0E10030885E /* volume_fitness_trackerUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5F24E3C02D25D0DF0030885E /* volume_fitness_tracker */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5F24E3E52D25D0E10030885E /* Build configuration list for PBXNativeTarget "volume_fitness_tracker" */;
+			buildPhases = (
+				BC63AD4C9A6B0D1AB29A3C4A /* [CP] Check Pods Manifest.lock */,
+				5F24E3BD2D25D0DF0030885E /* Sources */,
+				5F24E3BE2D25D0DF0030885E /* Frameworks */,
+				5F24E3BF2D25D0DF0030885E /* Resources */,
+				119F45A7DE2F3231FE7FC0F9 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				5F24E3C32D25D0DF0030885E /* volume_fitness_tracker */,
+			);
+			name = volume_fitness_tracker;
+			productName = volume_fitness_tracker;
+			productReference = 5F24E3C12D25D0DF0030885E /* volume_fitness_tracker.app */;
+			productType = "com.apple.product-type.application";
+		};
+		5F24E3D02D25D0E10030885E /* volume_fitness_trackerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5F24E3E82D25D0E10030885E /* Build configuration list for PBXNativeTarget "volume_fitness_trackerTests" */;
+			buildPhases = (
+				988AB71089A8129993EC8B2B /* [CP] Check Pods Manifest.lock */,
+				5F24E3CD2D25D0E10030885E /* Sources */,
+				5F24E3CE2D25D0E10030885E /* Frameworks */,
+				5F24E3CF2D25D0E10030885E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5F24E3D32D25D0E10030885E /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				5F24E3D42D25D0E10030885E /* volume_fitness_trackerTests */,
+			);
+			name = volume_fitness_trackerTests;
+			productName = volume_fitness_trackerTests;
+			productReference = 5F24E3D12D25D0E10030885E /* volume_fitness_trackerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		5F24E3DA2D25D0E10030885E /* volume_fitness_trackerUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5F24E3EB2D25D0E10030885E /* Build configuration list for PBXNativeTarget "volume_fitness_trackerUITests" */;
+			buildPhases = (
+				F4CB975A16082F0539C34E4D /* [CP] Check Pods Manifest.lock */,
+				5F24E3D72D25D0E10030885E /* Sources */,
+				5F24E3D82D25D0E10030885E /* Frameworks */,
+				5F24E3D92D25D0E10030885E /* Resources */,
+				84E2DBB61DF6676449560EBD /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5F24E3DD2D25D0E10030885E /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				5F24E3DE2D25D0E10030885E /* volume_fitness_trackerUITests */,
+			);
+			name = volume_fitness_trackerUITests;
+			productName = volume_fitness_trackerUITests;
+			productReference = 5F24E3DB2D25D0E10030885E /* volume_fitness_trackerUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5F24E3B92D25D0DF0030885E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1620;
+				LastUpgradeCheck = 1620;
+				TargetAttributes = {
+					5F24E3C02D25D0DF0030885E = {
+						CreatedOnToolsVersion = 16.2;
+					};
+					5F24E3D02D25D0E10030885E = {
+						CreatedOnToolsVersion = 16.2;
+						TestTargetID = 5F24E3C02D25D0DF0030885E;
+					};
+					5F24E3DA2D25D0E10030885E = {
+						CreatedOnToolsVersion = 16.2;
+						TestTargetID = 5F24E3C02D25D0DF0030885E;
+					};
+				};
+			};
+			buildConfigurationList = 5F24E3BC2D25D0DF0030885E /* Build configuration list for PBXProject "volume_fitness_tracker" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 5F24E3B82D25D0DF0030885E;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 5F24E3C22D25D0DF0030885E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5F24E3C02D25D0DF0030885E /* volume_fitness_tracker */,
+				5F24E3D02D25D0E10030885E /* volume_fitness_trackerTests */,
+				5F24E3DA2D25D0E10030885E /* volume_fitness_trackerUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5F24E3BF2D25D0DF0030885E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5F24E3CF2D25D0E10030885E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5F24E3D92D25D0E10030885E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		119F45A7DE2F3231FE7FC0F9 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-volume_fitness_tracker/Pods-volume_fitness_tracker-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-volume_fitness_tracker/Pods-volume_fitness_tracker-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-volume_fitness_tracker/Pods-volume_fitness_tracker-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		84E2DBB61DF6676449560EBD /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-volume_fitness_tracker-volume_fitness_trackerUITests/Pods-volume_fitness_tracker-volume_fitness_trackerUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-volume_fitness_tracker-volume_fitness_trackerUITests/Pods-volume_fitness_tracker-volume_fitness_trackerUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-volume_fitness_tracker-volume_fitness_trackerUITests/Pods-volume_fitness_tracker-volume_fitness_trackerUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		988AB71089A8129993EC8B2B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-volume_fitness_trackerTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BC63AD4C9A6B0D1AB29A3C4A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-volume_fitness_tracker-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F4CB975A16082F0539C34E4D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-volume_fitness_tracker-volume_fitness_trackerUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5F24E3BD2D25D0DF0030885E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5F24E3CD2D25D0E10030885E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5F24E3D72D25D0E10030885E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5F24E3D32D25D0E10030885E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5F24E3C02D25D0DF0030885E /* volume_fitness_tracker */;
+			targetProxy = 5F24E3D22D25D0E10030885E /* PBXContainerItemProxy */;
+		};
+		5F24E3DD2D25D0E10030885E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5F24E3C02D25D0DF0030885E /* volume_fitness_tracker */;
+			targetProxy = 5F24E3DC2D25D0E10030885E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		5F24E3E32D25D0E10030885E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		5F24E3E42D25D0E10030885E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		5F24E3E62D25D0E10030885E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7D745529E1E403B81F09A79D /* Pods-volume_fitness_tracker.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"volume_fitness_tracker/Preview Content\"";
+				DEVELOPMENT_TEAM = 3N7C4993B3;
+				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "volume-fitness-tracker-Info.plist";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bernsonfamily.volume-fitness-tracker";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5F24E3E72D25D0E10030885E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8E39BEAA31D51F65382506D8 /* Pods-volume_fitness_tracker.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"volume_fitness_tracker/Preview Content\"";
+				DEVELOPMENT_TEAM = 3N7C4993B3;
+				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "volume-fitness-tracker-Info.plist";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bernsonfamily.volume-fitness-tracker";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		5F24E3E92D25D0E10030885E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 895FDDA9D600D12F41A5571D /* Pods-volume_fitness_trackerTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3N7C4993B3;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bernsonfamily.volume-fitness-trackerTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/volume_fitness_tracker.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/volume_fitness_tracker";
+			};
+			name = Debug;
+		};
+		5F24E3EA2D25D0E10030885E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 29A85E700FE553F1CDEA9A96 /* Pods-volume_fitness_trackerTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3N7C4993B3;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bernsonfamily.volume-fitness-trackerTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/volume_fitness_tracker.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/volume_fitness_tracker";
+			};
+			name = Release;
+		};
+		5F24E3EC2D25D0E10030885E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 59BAC6BBB3AFE491C74E8BFE /* Pods-volume_fitness_tracker-volume_fitness_trackerUITests.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3N7C4993B3;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bernsonfamily.volume-fitness-trackerUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = volume_fitness_tracker;
+			};
+			name = Debug;
+		};
+		5F24E3ED2D25D0E10030885E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 671538208AAC862B3FF1C518 /* Pods-volume_fitness_tracker-volume_fitness_trackerUITests.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3N7C4993B3;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bernsonfamily.volume-fitness-trackerUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = volume_fitness_tracker;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5F24E3BC2D25D0DF0030885E /* Build configuration list for PBXProject "volume_fitness_tracker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5F24E3E32D25D0E10030885E /* Debug */,
+				5F24E3E42D25D0E10030885E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5F24E3E52D25D0E10030885E /* Build configuration list for PBXNativeTarget "volume_fitness_tracker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5F24E3E62D25D0E10030885E /* Debug */,
+				5F24E3E72D25D0E10030885E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5F24E3E82D25D0E10030885E /* Build configuration list for PBXNativeTarget "volume_fitness_trackerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5F24E3E92D25D0E10030885E /* Debug */,
+				5F24E3EA2D25D0E10030885E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5F24E3EB2D25D0E10030885E /* Build configuration list for PBXNativeTarget "volume_fitness_trackerUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5F24E3EC2D25D0E10030885E /* Debug */,
+				5F24E3ED2D25D0E10030885E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 5F24E3B92D25D0DF0030885E /* Project object */;
+}

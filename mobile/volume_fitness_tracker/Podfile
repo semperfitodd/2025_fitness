@@ -1,0 +1,28 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+
+target 'volume_fitness_tracker' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Add Firebase dependencies
+  pod 'Firebase/Auth'
+  pod 'Firebase/Core'
+
+  # Add Google Sign-In dependency
+  pod 'GoogleSignIn'
+  pod 'GoogleSignInSwiftSupport'
+
+  # Add Charts library
+  pod 'DGCharts'
+
+  target 'volume_fitness_trackerTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+  target 'volume_fitness_trackerUITests' do
+    # Pods for testing
+  end
+
+end

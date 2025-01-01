@@ -1,13 +1,13 @@
 //
-//  _025_Volume_Fitness_TrackerUITestsLaunchTests.swift
-//  2025 Volume Fitness TrackerUITests
+//  volume_fitness_trackerUITestsLaunchTests.swift
+//  volume_fitness_trackerUITests
 //
-//  Created by Todd Bernson on 12/30/24.
+//  Created by Todd Bernson on 1/1/25.
 //
 
 import XCTest
 
-final class _025_Volume_Fitness_TrackerUITestsLaunchTests: XCTestCase {
+final class volume_fitness_trackerUITestsLaunchTests: XCTestCase {
 
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true

@@ -7,24 +7,31 @@ import GoogleSignInSwift
 struct LoginScreen: View {
     @State private var isAuthenticated = false
     @State private var userEmail: String?
-    
+    var onLoginSuccess: (String) -> Void
+
     var body: some View {
-        if isAuthenticated {
-            HomeScreen(userEmail: userEmail ?? "")
-        } else {
-            VStack {
-                Text("Sign in to Fitness App")
-                    .font(.title)
-                    .padding()
-                
-                GoogleSignInButton(action: signInWithGoogle)
-                    .padding()
-                    .frame(maxWidth: 280)
+        if isAuthenticated, let email = userEmail {
+            // Call the success handler and return an empty view
+            DispatchQueue.main.async {
+                onLoginSuccess(email)
             }
-            .padding()
+            return AnyView(EmptyView())
+        } else {
+            return AnyView(
+                VStack {
+                    Text("Sign in to Fitness App")
+                        .font(.title)
+                        .padding()
+                    
+                    GoogleSignInButton(action: signInWithGoogle)
+                        .padding()
+                        .frame(maxWidth: 280)
+                }
+                .padding()
+            )
         }
     }
-    
+
     private func signInWithGoogle() {
         guard let clientID = FirebaseApp.app()?.options.clientID else { return }
         
