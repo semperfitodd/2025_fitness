@@ -5,18 +5,30 @@ import Firebase
 struct FitnessApp: App {
     init() {
         FirebaseApp.configure()
+        checkAuthState()
     }
 
     @State private var userEmail: String = ""
 
     var body: some Scene {
         WindowGroup {
-            LoginScreen(onLoginSuccess: { email in
-                userEmail = email
-            })
-            .overlay(
-                userEmail.isEmpty ? nil : AnyView(ContentView(userEmail: userEmail))
-            )
+            if userEmail.isEmpty {
+                LoginScreen(onLoginSuccess: { email in
+                    userEmail = email
+                })
+            } else {
+                ContentView(userEmail: userEmail, onSignOut: handleSignOut)
+            }
+        }
+    }
+
+    private func handleSignOut() {
+        userEmail = ""
+    }
+
+    private func checkAuthState() {
+        if let currentUser = Auth.auth().currentUser {
+            userEmail = currentUser.email ?? ""
         }
     }
 }
