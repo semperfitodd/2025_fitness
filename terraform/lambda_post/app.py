@@ -72,12 +72,16 @@ def lambda_handler(event, context):
 
         logger.info("Processing exercises for user: %s, date: %s", user, date)
 
-        existing_data = raw_data_table.get_item(Key={'user': user, 'date': date})
-        if 'Item' in existing_data:
-            logger.info("Found existing data for the same user and date. Adjusting aggregates.")
-            previous_exercise_volumes = existing_data['Item']['exercise_volumes']
-            previous_exercise_reps = existing_data['Item']['exercise_reps']
+        # Fetch existing data for the specific user and date
+        existing_data = raw_data_table.get_item(Key={'user': user, 'date': date}).get('Item')
 
+        if existing_data:
+            logger.info("Found existing data for the same user and date. Adjusting aggregates.")
+            previous_exercise_volumes = existing_data['exercise_volumes']
+            previous_exercise_reps = existing_data['exercise_reps']
+            previous_total_volume = existing_data['total_volume']
+
+            # Subtract previous contributions from aggregates
             for exercise_name, previous_volume in previous_exercise_volumes.items():
                 previous_reps = previous_exercise_reps[exercise_name]
                 aggregates_table.update_item(
@@ -89,7 +93,6 @@ def lambda_handler(event, context):
                     }
                 )
 
-            previous_total_volume = existing_data['Item']['total_volume']
             aggregates_table.update_item(
                 Key={'user': user, 'exercise_name': 'total_lifted'},
                 UpdateExpression="ADD total_volume :v",
@@ -98,8 +101,10 @@ def lambda_handler(event, context):
                 }
             )
 
+        # Calculate new contributions
         total_volume, exercise_volumes, exercise_reps = calculate_volume(exercises)
 
+        # Write raw data for the specific date
         raw_data_item = {
             'user': user,
             'date': date,
@@ -112,6 +117,7 @@ def lambda_handler(event, context):
         raw_data_table.put_item(Item=raw_data_item)
         logger.info("Successfully wrote raw data to table.")
 
+        # Update aggregates with new contributions
         update_aggregates(user, exercise_volumes, exercise_reps, total_volume)
 
         return {
