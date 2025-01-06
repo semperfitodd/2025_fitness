@@ -41,7 +41,7 @@ const ProgressBarGraph = ({ totalLifted }) => {
         scales: {
             x: {
                 min: 0,
-                max: 1, // Optional: Adjust as needed
+                max: 100,
             },
         },
         plugins: {
