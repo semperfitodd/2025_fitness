@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4EEADF1969F2FF7CEBE86911 /* Pods_volume_fitness_trackerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45A81E665107D22F4BFE8EEE /* Pods_volume_fitness_trackerTests.framework */; };
+		5F4077092D2D8DB1005F9099 /* volume_fitness_tracker_watch Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 5F4076FC2D2D8DB0005F9099 /* volume_fitness_tracker_watch Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		CA5E39C6DC4EE2673F574A64 /* Pods_volume_fitness_tracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CEB1B8C499297F72C162C06 /* Pods_volume_fitness_tracker.framework */; };
 		F21F06C0EAFB7B76968AC220 /* Pods_volume_fitness_tracker_volume_fitness_trackerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A746B6748B1E023B4AFFE633 /* Pods_volume_fitness_tracker_volume_fitness_trackerUITests.framework */; };
 /* End PBXBuildFile section */
@@ -27,7 +28,28 @@
 			remoteGlobalIDString = 5F24E3C02D25D0DF0030885E;
 			remoteInfo = volume_fitness_tracker;
 		};
+		5F4077072D2D8DB1005F9099 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5F24E3B92D25D0DF0030885E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5F4076FB2D2D8DB0005F9099;
+			remoteInfo = "volume_fitness_tracker_watch Watch App";
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		5F40770A2D2D8DB1005F9099 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				5F4077092D2D8DB1005F9099 /* volume_fitness_tracker_watch Watch App.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		29A85E700FE553F1CDEA9A96 /* Pods-volume_fitness_trackerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-volume_fitness_trackerTests.release.xcconfig"; path = "Target Support Files/Pods-volume_fitness_trackerTests/Pods-volume_fitness_trackerTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -37,6 +59,7 @@
 		5F24E3C12D25D0DF0030885E /* volume_fitness_tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = volume_fitness_tracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F24E3D12D25D0E10030885E /* volume_fitness_trackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = volume_fitness_trackerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F24E3DB2D25D0E10030885E /* volume_fitness_trackerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = volume_fitness_trackerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5F4076FC2D2D8DB0005F9099 /* volume_fitness_tracker_watch Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "volume_fitness_tracker_watch Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		671538208AAC862B3FF1C518 /* Pods-volume_fitness_tracker-volume_fitness_trackerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-volume_fitness_tracker-volume_fitness_trackerUITests.release.xcconfig"; path = "Target Support Files/Pods-volume_fitness_tracker-volume_fitness_trackerUITests/Pods-volume_fitness_tracker-volume_fitness_trackerUITests.release.xcconfig"; sourceTree = "<group>"; };
 		7D745529E1E403B81F09A79D /* Pods-volume_fitness_tracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-volume_fitness_tracker.debug.xcconfig"; path = "Target Support Files/Pods-volume_fitness_tracker/Pods-volume_fitness_tracker.debug.xcconfig"; sourceTree = "<group>"; };
 		895FDDA9D600D12F41A5571D /* Pods-volume_fitness_trackerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-volume_fitness_trackerTests.debug.xcconfig"; path = "Target Support Files/Pods-volume_fitness_trackerTests/Pods-volume_fitness_trackerTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -58,6 +81,11 @@
 		5F24E3DE2D25D0E10030885E /* volume_fitness_trackerUITests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = volume_fitness_trackerUITests;
+			sourceTree = "<group>";
+		};
+		5F4076FD2D2D8DB0005F9099 /* volume_fitness_tracker_watch Watch App */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "volume_fitness_tracker_watch Watch App";
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -84,6 +112,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				F21F06C0EAFB7B76968AC220 /* Pods_volume_fitness_tracker_volume_fitness_trackerUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5F4076F92D2D8DB0005F9099 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -119,6 +154,7 @@
 				5F24E3C32D25D0DF0030885E /* volume_fitness_tracker */,
 				5F24E3D42D25D0E10030885E /* volume_fitness_trackerTests */,
 				5F24E3DE2D25D0E10030885E /* volume_fitness_trackerUITests */,
+				5F4076FD2D2D8DB0005F9099 /* volume_fitness_tracker_watch Watch App */,
 				5F24E3C22D25D0DF0030885E /* Products */,
 				10AD4077E871644DA8D0EAA3 /* Pods */,
 				46CCC1DC6F29D0C28C95EBDB /* Frameworks */,
@@ -131,6 +167,7 @@
 				5F24E3C12D25D0DF0030885E /* volume_fitness_tracker.app */,
 				5F24E3D12D25D0E10030885E /* volume_fitness_trackerTests.xctest */,
 				5F24E3DB2D25D0E10030885E /* volume_fitness_trackerUITests.xctest */,
+				5F4076FC2D2D8DB0005F9099 /* volume_fitness_tracker_watch Watch App.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -147,10 +184,12 @@
 				5F24E3BE2D25D0DF0030885E /* Frameworks */,
 				5F24E3BF2D25D0DF0030885E /* Resources */,
 				119F45A7DE2F3231FE7FC0F9 /* [CP] Embed Pods Frameworks */,
+				5F40770A2D2D8DB1005F9099 /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				5F4077082D2D8DB1005F9099 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				5F24E3C32D25D0DF0030885E /* volume_fitness_tracker */,
@@ -205,6 +244,28 @@
 			productReference = 5F24E3DB2D25D0E10030885E /* volume_fitness_trackerUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		5F4076FB2D2D8DB0005F9099 /* volume_fitness_tracker_watch Watch App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5F40770D2D2D8DB1005F9099 /* Build configuration list for PBXNativeTarget "volume_fitness_tracker_watch Watch App" */;
+			buildPhases = (
+				5F4076F82D2D8DB0005F9099 /* Sources */,
+				5F4076F92D2D8DB0005F9099 /* Frameworks */,
+				5F4076FA2D2D8DB0005F9099 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				5F4076FD2D2D8DB0005F9099 /* volume_fitness_tracker_watch Watch App */,
+			);
+			name = "volume_fitness_tracker_watch Watch App";
+			packageProductDependencies = (
+			);
+			productName = "volume_fitness_tracker_watch Watch App";
+			productReference = 5F4076FC2D2D8DB0005F9099 /* volume_fitness_tracker_watch Watch App.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -226,6 +287,9 @@
 						CreatedOnToolsVersion = 16.2;
 						TestTargetID = 5F24E3C02D25D0DF0030885E;
 					};
+					5F4076FB2D2D8DB0005F9099 = {
+						CreatedOnToolsVersion = 16.2;
+					};
 				};
 			};
 			buildConfigurationList = 5F24E3BC2D25D0DF0030885E /* Build configuration list for PBXProject "volume_fitness_tracker" */;
@@ -245,6 +309,7 @@
 				5F24E3C02D25D0DF0030885E /* volume_fitness_tracker */,
 				5F24E3D02D25D0E10030885E /* volume_fitness_trackerTests */,
 				5F24E3DA2D25D0E10030885E /* volume_fitness_trackerUITests */,
+				5F4076FB2D2D8DB0005F9099 /* volume_fitness_tracker_watch Watch App */,
 			);
 		};
 /* End PBXProject section */
@@ -265,6 +330,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		5F24E3D92D25D0E10030885E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5F4076FA2D2D8DB0005F9099 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -398,6 +470,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		5F4076F82D2D8DB0005F9099 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -410,6 +489,11 @@
 			isa = PBXTargetDependency;
 			target = 5F24E3C02D25D0DF0030885E /* volume_fitness_tracker */;
 			targetProxy = 5F24E3DC2D25D0E10030885E /* PBXContainerItemProxy */;
+		};
+		5F4077082D2D8DB1005F9099 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5F4076FB2D2D8DB0005F9099 /* volume_fitness_tracker_watch Watch App */;
+			targetProxy = 5F4077072D2D8DB1005F9099 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -675,6 +759,66 @@
 			};
 			name = Release;
 		};
+		5F40770B2D2D8DB1005F9099 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"volume_fitness_tracker_watch Watch App/Preview Content\"";
+				DEVELOPMENT_TEAM = 3N7C4993B3;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = VolumeFit;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "com.bernsonfamily.volume-fitness-tracker";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bernsonfamily.volume-fitness-tracker.watchkitapp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 11.2;
+			};
+			name = Debug;
+		};
+		5F40770C2D2D8DB1005F9099 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"volume_fitness_tracker_watch Watch App/Preview Content\"";
+				DEVELOPMENT_TEAM = 3N7C4993B3;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = VolumeFit;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "com.bernsonfamily.volume-fitness-tracker";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bernsonfamily.volume-fitness-tracker.watchkitapp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 11.2;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -710,6 +854,15 @@
 			buildConfigurations = (
 				5F24E3EC2D25D0E10030885E /* Debug */,
 				5F24E3ED2D25D0E10030885E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5F40770D2D2D8DB1005F9099 /* Build configuration list for PBXNativeTarget "volume_fitness_tracker_watch Watch App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5F40770B2D2D8DB1005F9099 /* Debug */,
+				5F40770C2D2D8DB1005F9099 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
