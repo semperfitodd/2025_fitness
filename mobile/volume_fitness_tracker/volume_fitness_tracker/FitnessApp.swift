@@ -1,30 +1,33 @@
 import SwiftUI
 import Firebase
 import GoogleSignIn
+import WatchConnectivity
 
 @main
 struct FitnessApp: App {
-    // Convert @State to @StateObject to handle reference type storage
     @StateObject private var authManager = AuthenticationManager()
+    @StateObject private var connectivityManager = WatchConnectivityManager.shared
     
     init() {
         FirebaseApp.configure()
     }
-
+    
     var body: some Scene {
         WindowGroup {
             if authManager.userEmail.isEmpty {
                 LoginScreen(onLoginSuccess: { email in
                     authManager.userEmail = email
+                    connectivityManager.updateEmail(email)
                 })
             } else {
-                ContentView(userEmail: authManager.userEmail, onSignOut: authManager.handleSignOut)
+                ContentView(userEmail: authManager.userEmail, onSignOut: {
+                    authManager.handleSignOut()
+                })
             }
         }
     }
 }
 
-// Create a separate class to handle authentication state
 class AuthenticationManager: ObservableObject {
     @Published var userEmail: String = ""
     
@@ -55,6 +58,7 @@ class AuthenticationManager: ObservableObject {
                     if let email = authResult?.user.email {
                         DispatchQueue.main.async {
                             self?.userEmail = email
+                            WatchConnectivityManager.shared.updateEmail(email)
                         }
                     }
                 }
@@ -66,6 +70,7 @@ class AuthenticationManager: ObservableObject {
         do {
             try Auth.auth().signOut()
             GIDSignIn.sharedInstance.signOut()
+            WatchConnectivityManager.shared.updateEmail("Guest")
             DispatchQueue.main.async {
                 self.userEmail = ""
             }

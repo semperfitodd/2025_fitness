@@ -11,7 +11,6 @@ struct LoginScreen: View {
 
     var body: some View {
         if isAuthenticated, let email = userEmail {
-            // Call the success handler and return an empty view
             DispatchQueue.main.async {
                 onLoginSuccess(email)
             }
@@ -64,6 +63,7 @@ struct LoginScreen: View {
                 DispatchQueue.main.async {
                     userEmail = authResult?.user.email
                     isAuthenticated = true
+                    WatchConnectivityManager.shared.updateEmail(authResult?.user.email ?? "Guest")
                 }
             }
         }
