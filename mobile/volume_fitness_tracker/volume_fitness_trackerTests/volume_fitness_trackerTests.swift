@@ -1,10 +1,3 @@
-//
-//  volume_fitness_trackerTests.swift
-//  volume_fitness_trackerTests
-//
-//  Created by Todd Bernson on 1/1/25.
-//
-
 import Testing
 @testable import volume_fitness_tracker
 
