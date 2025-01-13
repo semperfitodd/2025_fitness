@@ -1,6 +1,6 @@
 # 2025 Fitness Project
 
-This repository contains a comprehensive fitness tracking solution, including a React.js web app, iOS/watchOS mobile app, and Terraform infrastructure. The project uses serverless architecture to ensure scalability, security, and low maintenance overhead.
+This repository contains a comprehensive fitness tracking solution, including a React.js web app, iOS/watchOS mobile app, and Terraform infrastructure. The project uses serverless architecture to ensure scalability, security, and low maintenance overhead. Generative AI model Claude 3.5 is embedded into the web and iOS application.
 
 ## Screenshots
 
@@ -113,6 +113,7 @@ This repository contains a comprehensive fitness tracking solution, including a 
 - **Cross-Platform**: Unified experience across web, iOS, and watchOS.
 - **Ease of Maintenance**: Minimal operational overhead with AWS-managed services.
 - **User Privacy**: Sensitive data is securely transmitted and stored.
+- **GenAI**: Generative AI Claude 3.5 to create personalized fitness routines.
 
 ## Best Practices Followed
 - Secure handling of secrets using AWS Secrets Manager and local configuration files.
