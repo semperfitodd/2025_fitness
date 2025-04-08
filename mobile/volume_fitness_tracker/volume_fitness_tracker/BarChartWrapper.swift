@@ -26,7 +26,7 @@ struct BarChartWrapper: UIViewRepresentable {
     
     private func generateChartData() -> BarChartData {
         // Calculate percentages
-        let totalLiftedPercentage = Double(round((totalLifted / 15000000.0) * 10000) / 100)
+        let totalLiftedPercentage = Double(round((totalLifted / 25000000.0) * 10000) / 100)
         let daysIntoYearPercentage = Double(round((Double(daysIntoYear) / 365.0) * 10000) / 100)
         
         // Bar chart entries

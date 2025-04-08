@@ -12,7 +12,7 @@ const ProgressBarGraph = ({ totalLifted }) => {
     const daysIntoYear = Math.floor((currentDate - startOfYear) / (1000 * 60 * 60 * 24)) + 1; // Count the current day
 
     // Calculate percentages
-    const totalLiftedPercentage = Math.round((totalLifted / 15000000) * 100 * 100) / 100; // Rounded to 2 decimals
+    const totalLiftedPercentage = Math.round((totalLifted / 25000000) * 100 * 100) / 100; // Rounded to 2 decimals
     const daysIntoYearPercentage = Math.round((daysIntoYear / 365) * 100 * 100) / 100; // Rounded to 2 decimals
 
     // Log values for debugging

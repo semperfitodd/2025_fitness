@@ -1,10 +1,11 @@
 import SwiftUI
 
 struct ContentView: View {
-    @ObservedObject private var connectivityManager = WatchConnectivityManager.shared
     @State private var totalLifted: Int = 0
     @State private var errorMessage: String?
     @State private var isLoading: Bool = true
+
+    private let userEmail = "todd@bernsonfamily.com"
 
     var body: some View {
         TabView {
@@ -44,55 +45,40 @@ struct ContentView: View {
                     Text("\(totalLifted) lbs")
                         .font(.headline)
                         .padding(.top, 4)
-                    Text("\(String(format: "%.2f", calculateLiftedPercentage()))% of 15M")
+                    Text("\(String(format: "%.2f", calculateLiftedPercentage()))% of 25M")
                         .font(.subheadline)
                         .foregroundColor(.gray)
                 }
             }
             .onAppear {
-                retryFetchEmailAndData()
+                fetchData()
             }
             .tabItem {
                 Label("Stats", systemImage: "chart.bar")
             }
-        }
-        .onAppear {
-            logAppDetails()
         }
         .tabViewStyle(PageTabViewStyle())
     }
 
     private func fetchData() {
         isLoading = true
-        print("Fetching data for email: \(connectivityManager.userEmail)")
-        APIClient.fetchData(for: connectivityManager.userEmail) { result in
+        APIClient.fetchData(for: userEmail) { result in
             DispatchQueue.main.async {
                 isLoading = false
                 switch result {
                 case .success(let data):
-                    print("API Response: \(data)")
                     totalLifted = Int(data["total_lifted"] as? Double ?? 0.0)
                 case .failure(let error):
                     errorMessage = "Error fetching data: \(error.localizedDescription)"
-                    print("Error Details: \(error)")
                 }
             }
         }
     }
 
-    private func retryFetchEmailAndData() {
-        if connectivityManager.userEmail == "Guest" {
-            print("Retrying to fetch email...")
-            WatchConnectivityManager.shared.retryFetchingEmail() // Correctly call the method
-        }
-        fetchData()
-    }
-
     private func calculateDaysIntoYear() -> Int {
         let currentDate = Date()
         let startOfYear = Calendar.current.date(from: Calendar.current.dateComponents([.year], from: currentDate))!
-        let days = Calendar.current.dateComponents([.day], from: startOfYear, to: currentDate).day ?? 0
-        return days + 1 // Add 1 to include the current day
+        return Calendar.current.dateComponents([.day], from: startOfYear, to: currentDate).day ?? 0 + 1
     }
 
     private func calculateYearPercentage() -> Double {
@@ -101,13 +87,6 @@ struct ContentView: View {
     }
 
     private func calculateLiftedPercentage() -> Double {
-        return (Double(totalLifted) / 15000000.0) * 100.0
-    }
-
-    private func logAppDetails() {
-        print("App Initialized")
-        print("Email: \(connectivityManager.userEmail)")
-        print("API URL: \(Secrets.apiUrl)")
-        print("API Token: \(Secrets.apiToken)")
+        return (Double(totalLifted) / 25_000_000.0) * 100.0
     }
 }
