@@ -2,6 +2,8 @@ resource "aws_dynamodb_table" "raw_data" {
   name         = "${var.environment}_raw_data"
   billing_mode = "PAY_PER_REQUEST"
 
+  deletion_protection_enabled = true
+
   attribute {
     name = "user"
     type = "S"
@@ -36,6 +38,8 @@ resource "aws_dynamodb_table" "raw_data" {
 resource "aws_dynamodb_table" "aggregates" {
   name         = "${var.environment}_aggregated"
   billing_mode = "PAY_PER_REQUEST"
+
+  deletion_protection_enabled = true
 
   attribute {
     name = "user"

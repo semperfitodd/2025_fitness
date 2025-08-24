@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-// eslint-disable-next-line no-unused-vars
-import { addDoc, collection } from 'firebase/firestore';
-// eslint-disable-next-line no-unused-vars
-import { db } from '../utils/firebase';
+import { API_ENDPOINTS, FITNESS_CONSTANTS } from '../utils/constants';
+import { validateExerciseData, validateDate } from '../utils/validation';
+import { logError, logUserAction } from '../utils/errorTracking';
 
 const InsertScreen = ({ setCurrentScreen, user }) => {
     const [date, setDate] = useState(new Date().toISOString().split('T')[0]);
-    const [rows, setRows] = useState([{ exercise: '', weight: 0, reps: 0 }]);
+    const [rows, setRows] = useState([{ ...FITNESS_CONSTANTS.DEFAULT_EXERCISE_ROW, id: Date.now() }]);
     const [expandedIndex, setExpandedIndex] = useState(null);
 
     const handleDateChange = (e) => {
@@ -21,7 +20,7 @@ const InsertScreen = ({ setCurrentScreen, user }) => {
     };
 
     const handleAddRow = () => {
-        setRows([...rows, { exercise: '', weight: 0, reps: 0 }]);
+        setRows([...rows, { ...FITNESS_CONSTANTS.DEFAULT_EXERCISE_ROW, id: Date.now() }]);
     };
 
     const handleSubmit = async (e) => {
@@ -29,12 +28,34 @@ const InsertScreen = ({ setCurrentScreen, user }) => {
 
         // Ensure the user is available before submitting
         if (!user || !user.email) {
+            logError(new Error('User information missing'), { screen: 'InsertScreen' });
             alert('User information is missing. Please log in again.');
             return;
         }
 
+        // Validate date
+        const dateError = validateDate(date);
+        if (dateError) {
+            alert(`Date Error: ${dateError}`);
+            return;
+        }
+
+        // Validate all exercise data
+        const validationErrors = [];
+        rows.forEach((row, index) => {
+            const errors = validateExerciseData(row);
+            if (errors.length > 0) {
+                validationErrors.push(`Row ${index + 1}: ${errors.join(', ')}`);
+            }
+        });
+
+        if (validationErrors.length > 0) {
+            alert(`Validation Errors:\n${validationErrors.join('\n')}`);
+            return;
+        }
+
         const formattedData = {
-            user: user.email, // Add user email to the payload
+            user: user.email,
             date,
             exercises: rows.map((row) => ({
                 name: row.exercise,
@@ -44,8 +65,13 @@ const InsertScreen = ({ setCurrentScreen, user }) => {
         };
 
         try {
-            const response = await axios.post(
-                'https://fitness.bernson.info/post',
+            logUserAction('submit_exercises', { 
+                exerciseCount: rows.length, 
+                date: date 
+            });
+
+            await axios.post(
+                API_ENDPOINTS.POST,
                 formattedData,
                 {
                     headers: {
@@ -63,19 +89,24 @@ const InsertScreen = ({ setCurrentScreen, user }) => {
 
             alert(`Records submitted successfully! Total lifted today: ${totalLbsLifted.toLocaleString()} lbs.`);
 
-            setRows([{ exercise: '', weight: 0, reps: 0 }]);
+            setRows([{ ...FITNESS_CONSTANTS.DEFAULT_EXERCISE_ROW, id: Date.now() }]);
             setExpandedIndex(null);
-            setCurrentScreen('home'); // Navigate back to the home screen
+            setCurrentScreen('home');
         } catch (error) {
+            logError(error, { 
+                screen: 'InsertScreen', 
+                action: 'submit_exercises',
+                data: formattedData 
+            });
             console.error('Error submitting records:', error);
             alert('Failed to submit records. Please try again.');
         }
     };
 
     return (
-        <div className="insert-screen-container">
+        <div className="insert-screen-container fade-in">
             <h2>Insert New Records</h2>
-            <form onSubmit={handleSubmit} className="insert-form">
+            <form onSubmit={handleSubmit} className="insert-form scale-in">
                 <label className="date-label">
                     Date:
                     <input
@@ -88,7 +119,7 @@ const InsertScreen = ({ setCurrentScreen, user }) => {
                 <div className="exercise-container">
                     {rows.map((row, index) => (
                         <div
-                            key={index}
+                            key={row.id || index}
                             className={`exercise-row ${
                                 expandedIndex === index ? 'expanded' : ''
                             }`}

@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
-import { fetchWorkoutPlan } from '../utils/api';
+import ErrorDisplay from '../components/ErrorDisplay';
+import { useApi } from '../hooks/useApi';
 
 const GenerateWorkoutScreen = () => {
     const [workoutPlan, setWorkoutPlan] = useState(null);
-    const [loading, setLoading] = useState(false);
+    const { loading, error, getWorkoutPlan, clearError } = useApi();
 
     const handleGenerateWorkout = async () => {
-        setLoading(true);
-        const plan = await fetchWorkoutPlan();
-        setWorkoutPlan(plan);
-        setLoading(false);
+        const plan = await getWorkoutPlan();
+        if (plan) {
+            setWorkoutPlan(plan);
+        }
     };
 
     const parseWorkoutPlan = (text) => {
@@ -42,9 +43,10 @@ const GenerateWorkoutScreen = () => {
     };
 
     return (
-        <div className="generate-workout-container">
+        <div className="generate-workout-container fade-in">
             <h2>Generate a Workout Plan</h2>
-            <button onClick={handleGenerateWorkout} className="generate-button">
+            <ErrorDisplay error={error} onRetry={handleGenerateWorkout} onDismiss={clearError} />
+            <button onClick={handleGenerateWorkout} className="generate-button" disabled={loading}>
                 {loading ? 'Generating...' : 'Generate Workout'}
             </button>
             {workoutPlan && (

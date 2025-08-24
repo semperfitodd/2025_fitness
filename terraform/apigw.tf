@@ -7,9 +7,9 @@ module "api_gateway" {
   protocol_type = "HTTP"
 
   cors_configuration = {
-    allow_headers = ["content-type", "x-amz-date", "authorization", "x-api-key", "x-amz-security-token", "x-amz-user-agent"]
-    allow_methods = ["*"]
-    allow_origins = ["*"]
+    allow_headers = ["content-type", "x-amz-date", "authorization", "x-api-key", "x-amz-security-token", "x-amz-user-agent", "x-user-email"]
+    allow_methods = ["GET", "POST", "OPTIONS"]
+    allow_origins = ["https://${local.domain_name}"]
   }
 
   create_certificate = false
@@ -28,6 +28,7 @@ module "api_gateway" {
     detailed_metrics_enabled = true
     throttling_burst_limit   = 50
     throttling_rate_limit    = 50
+    payload_size_limit       = "10MB"
   }
 
   authorizers = {

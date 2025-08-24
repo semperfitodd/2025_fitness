@@ -1,40 +1,55 @@
 import axios from 'axios';
+import { API_ENDPOINTS } from './constants';
+import { logError, logUserAction } from './errorTracking';
+
+const getApiHeaders = (userEmail = null) => {
+    const headers = {
+        'x-api-key': process.env.REACT_APP_API_KEY,
+        'Content-Type': 'application/json',
+    };
+    
+    if (userEmail) {
+        headers['x-user-email'] = userEmail;
+    }
+    
+    return headers;
+};
 
 export const fetchFitnessData = async (userEmail) => {
-    const API_KEY = process.env.REACT_APP_API_KEY;
-
     try {
-        console.log("Sending userEmail:", userEmail); // Log the email being sent
+        logUserAction('fetch_fitness_data', { userEmail });
+        console.log("Sending userEmail:", userEmail);
+        
         const response = await axios.post(
-            "/get",
-            { user: userEmail }, // Body
-            {
-                headers: {
-                    "x-api-key": API_KEY,
-                    "Content-Type": "application/json",
-                },
-            }
+            API_ENDPOINTS.GET,
+            { user: userEmail },
+            { headers: getApiHeaders(userEmail) }
         );
-        console.log("Response from API:", response.data); // Log response for debugging
+        console.log("Response from API:", response.data);
         return response.data;
     } catch (error) {
+        logError(error, { 
+            action: 'fetch_fitness_data', 
+            userEmail 
+        });
         console.error("Error fetching fitness data:", error.response?.data || error.message);
-        return null;
+        throw error;
     }
 };
 
 export const fetchWorkoutPlan = async () => {
-    const API_KEY = process.env.REACT_APP_API_KEY;
-
     try {
-        const response = await axios.get('/claude', {
-            headers: {
-                'x-api-key': API_KEY,
-            },
+        logUserAction('fetch_workout_plan');
+        
+        const response = await axios.get(API_ENDPOINTS.WORKOUT, {
+            headers: getApiHeaders(),
         });
         return response.data.workout_plan;
     } catch (error) {
+        logError(error, { 
+            action: 'fetch_workout_plan' 
+        });
         console.error('Error fetching workout plan:', error.response?.data || error.message);
-        return null;
+        throw error;
     }
 };

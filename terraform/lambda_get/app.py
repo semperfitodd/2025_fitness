@@ -1,6 +1,7 @@
 import json
 import logging
 import os
+import re
 from decimal import Decimal
 import boto3
 
@@ -9,6 +10,39 @@ logger.setLevel(logging.INFO)
 
 dynamodb = boto3.resource("dynamodb")
 aggregates_table = dynamodb.Table(os.environ["AGGREGATES_TABLE"])
+
+
+def validate_user_email(email):
+    """Validate user email format"""
+    if not email or not isinstance(email, str):
+        raise ValueError("User email is required and must be a string")
+    
+    email_pattern = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+    if not re.match(email_pattern, email):
+        raise ValueError("Invalid email format")
+    
+    if len(email) > 254:  # RFC 5321 limit
+        raise ValueError("Email address too long")
+    
+    return email.strip().lower()
+
+
+def get_authenticated_user(event):
+    """Extract and validate the authenticated user from the request"""
+    headers = event.get('headers', {})
+    
+    # First try to get user from headers (this is what we're actually using)
+    user = headers.get('x-user-email')
+    if user:
+        return validate_user_email(user)
+    
+    # Fallback: check if user is in authorizer context
+    if 'requestContext' in event and 'authorizer' in event['requestContext']:
+        authorizer_user = event['requestContext']['authorizer'].get('user')
+        if authorizer_user:
+            return validate_user_email(authorizer_user)
+    
+    raise ValueError("User authentication required")
 
 
 class DecimalEncoder(json.JSONEncoder):
@@ -57,22 +91,43 @@ def lambda_handler(event, context):
         else:
             body_json = body
 
-        # Extract the user field
-        user = body_json.get("user")
-        if not user:
+        # Get authenticated user from request context
+        try:
+            authenticated_user = get_authenticated_user(event)
+            logger.info("Authenticated user: %s", authenticated_user)
+        except ValueError as e:
+            logger.error("Authentication error: %s", e)
+            return {
+                "statusCode": 401,
+                "body": json.dumps({"error": "Authentication required"}),
+            }
+
+        # Extract the requested user from body (for backward compatibility)
+        requested_user = body_json.get("user")
+        if not requested_user:
             logger.error("Missing 'user' field in request body.")
             return {
                 "statusCode": 400,
                 "body": json.dumps({"error": "Missing 'user' field in request body."}),
             }
 
+        logger.info("Requested user: %s", requested_user)
+
+        # Validate that authenticated user can access requested user's data
+        if authenticated_user != requested_user:
+            logger.warning("User %s attempted to access data for different user %s", authenticated_user, requested_user)
+            return {
+                "statusCode": 403,
+                "body": json.dumps({"error": "Access denied"}),
+            }
+
         # Query DynamoDB for the user's data
-        items = query_aggregates_by_user(user)
+        items = query_aggregates_by_user(authenticated_user)
         if not items:
-            logger.info(f"No data found for user: {user}")
+            logger.info(f"No data found for user: {authenticated_user}")
             return {
                 "statusCode": 404,
-                "body": json.dumps({"error": f"No data found for user: {user}"}),
+                "body": json.dumps({"error": f"No data found for user: {authenticated_user}"}),
             }
 
         # Process the data
@@ -99,7 +154,7 @@ def lambda_handler(event, context):
 
         # Build the response
         response_body = {
-            "user": user,
+            "user": authenticated_user,
             "exercise_data": exercise_data,
             "total_lifted": total_lifted,
         }
@@ -111,9 +166,15 @@ def lambda_handler(event, context):
             "body": json.dumps(response_body, cls=DecimalEncoder),
         }
 
+    except ValueError as e:
+        logger.warning("Validation error: %s", e)
+        return {
+            "statusCode": 400,
+            "body": json.dumps({"error": str(e)}),
+        }
     except Exception as e:
         logger.error(f"Error in lambda_handler: {e}", exc_info=True)
         return {
             "statusCode": 500,
-            "body": json.dumps({"error": str(e)}),
+            "body": json.dumps({"error": "Internal server error"}),
         }

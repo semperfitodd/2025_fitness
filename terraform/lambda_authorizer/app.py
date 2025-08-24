@@ -36,7 +36,16 @@ def lambda_handler(event, context):
 
         if client_key and client_key.strip() == api_key_secret.strip():
             logger.info("Authorization succeeded")
-            return {"isAuthorized": True}
+            # Extract user from headers if available
+            headers = event.get("headers", {})
+            user_email = headers.get("x-user-email", "")
+            
+            return {
+                "isAuthorized": True,
+                "context": {
+                    "user": user_email
+                }
+            }
         else:
             logger.info("Authorization failed")
             return {"isAuthorized": False}
