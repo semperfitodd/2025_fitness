@@ -68,12 +68,10 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		5FD26D1D2D317D9100E77C32 /* Exceptions for "volume_fitness_tracker" folder in "volume_fitness_tracker_watch Watch App" target */ = {
+		5FFD1C2B2E5B93A10072371B /* Exceptions for "volume_fitness_tracker" folder in "volume_fitness_tracker_watch Watch App" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				APIClient.swift,
-				Secrets.swift,
-				WatchConnectivityManager.swift,
+				Config/Secrets.plist,
 			);
 			target = 5F4076FB2D2D8DB0005F9099 /* volume_fitness_tracker_watch Watch App */;
 		};
@@ -83,7 +81,7 @@
 		5F24E3C32D25D0DF0030885E /* volume_fitness_tracker */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				5FD26D1D2D317D9100E77C32 /* Exceptions for "volume_fitness_tracker" folder in "volume_fitness_tracker_watch Watch App" target */,
+				5FFD1C2B2E5B93A10072371B /* Exceptions for "volume_fitness_tracker" folder in "volume_fitness_tracker_watch Watch App" target */,
 			);
 			path = volume_fitness_tracker;
 			sourceTree = "<group>";
