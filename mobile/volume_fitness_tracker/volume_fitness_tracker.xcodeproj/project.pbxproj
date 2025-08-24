@@ -72,6 +72,7 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Config/Secrets.plist,
+				Services/Models.swift,
 			);
 			target = 5F4076FB2D2D8DB0005F9099 /* volume_fitness_tracker_watch Watch App */;
 		};

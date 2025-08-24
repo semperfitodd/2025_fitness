@@ -3,10 +3,12 @@ import DGCharts
 
 struct HomeScreen: View {
     let userEmail: String
+    let userName: String
     @StateObject private var viewModel: HomeViewModel
     
-    init(userEmail: String) {
+    init(userEmail: String, userName: String) {
         self.userEmail = userEmail
+        self.userName = userName
         self._viewModel = StateObject(wrappedValue: HomeViewModel(userEmail: userEmail))
     }
     
@@ -57,7 +59,7 @@ struct HomeScreen: View {
     
     private var welcomeSection: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text("Welcome, \(userEmail)!")
+            Text("Welcome, \(userName.isEmpty ? userEmail : userName)!")
                 .font(.title2)
                 .fontWeight(.bold)
             
@@ -207,5 +209,5 @@ struct HomeScreen: View {
 }
 
 #Preview {
-    HomeScreen(userEmail: "test@example.com")
+    HomeScreen(userEmail: "test@example.com", userName: "Test")
 }

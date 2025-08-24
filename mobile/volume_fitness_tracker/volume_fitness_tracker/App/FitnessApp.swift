@@ -13,11 +13,12 @@ struct FitnessApp: App {
     var body: some Scene {
         WindowGroup {
             if authManager.userEmail.isEmpty {
-                LoginScreen(onLoginSuccess: { email in
+                LoginScreen(onLoginSuccess: { email, name in
                     authManager.userEmail = email
+                    authManager.userName = name ?? ""
                 })
             } else {
-                ContentView(userEmail: authManager.userEmail, onSignOut: {
+                ContentView(userEmail: authManager.userEmail, userName: authManager.userName, onSignOut: {
                     authManager.handleSignOut()
                 })
             }
@@ -28,6 +29,7 @@ struct FitnessApp: App {
 @MainActor
 class AuthenticationManager: ObservableObject {
     @Published var userEmail: String = ""
+    @Published var userName: String = ""
     @Published var isLoading: Bool = false
     @Published var errorMessage: String?
     
@@ -69,6 +71,11 @@ class AuthenticationManager: ObservableObject {
                             
                             if let email = authResult?.user.email {
                                 self?.userEmail = email
+                                // Extract first name from display name
+                                if let displayName = authResult?.user.displayName {
+                                    let components = displayName.components(separatedBy: " ")
+                                    self?.userName = components.first ?? ""
+                                }
                                 self?.logger.logAuthenticationEvent("Firebase Auth Success", userEmail: email, success: true)
                             }
                         }
@@ -88,6 +95,7 @@ class AuthenticationManager: ObservableObject {
             GIDSignIn.sharedInstance.signOut()
             
             userEmail = ""
+            userName = ""
             logger.logAuthenticationEvent("Sign Out", userEmail: nil, success: true)
             
         } catch {

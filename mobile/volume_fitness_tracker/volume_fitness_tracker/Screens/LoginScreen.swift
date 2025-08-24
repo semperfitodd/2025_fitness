@@ -7,12 +7,13 @@ import GoogleSignInSwift
 struct LoginScreen: View {
     @State private var isAuthenticated = false
     @State private var userEmail: String?
-    var onLoginSuccess: (String) -> Void
+    @State private var userName: String?
+    var onLoginSuccess: (String, String?) -> Void
 
     var body: some View {
         if isAuthenticated, let email = userEmail {
             DispatchQueue.main.async {
-                onLoginSuccess(email)
+                onLoginSuccess(email, userName)
             }
             return AnyView(EmptyView())
         } else {
@@ -62,6 +63,11 @@ struct LoginScreen: View {
                 
                 DispatchQueue.main.async {
                     userEmail = authResult?.user.email
+                    // Extract first name from display name
+                    if let displayName = authResult?.user.displayName {
+                        let components = displayName.components(separatedBy: " ")
+                        userName = components.first
+                    }
                     isAuthenticated = true
                 }
             }

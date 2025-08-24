@@ -2,11 +2,12 @@ import SwiftUI
 
 struct ContentView: View {
     let userEmail: String
+    let userName: String
     var onSignOut: () -> Void
 
     var body: some View {
         TabView {
-            HomeScreen(userEmail: userEmail)
+            HomeScreen(userEmail: userEmail, userName: userName)
                 .tabItem {
                     Label("Home", systemImage: "house.fill")
                 }
@@ -30,12 +31,13 @@ struct ContentView: View {
                 }
                 .tag(3)
         }
+        .tabViewStyle(PageTabViewStyle())
         .accentColor(.blue)
     }
 }
 
 #Preview {
-    ContentView(userEmail: "test@example.com") {
+    ContentView(userEmail: "test@example.com", userName: "Test") {
         print("Sign out tapped")
     }
 }
