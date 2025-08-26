@@ -3,13 +3,16 @@ import SwiftUI
 @main
 struct volume_fitness_tracker_watch_Watch_AppApp: App {
     init() {
-        print("⌚ Watch App: INIT - App is starting")
+        print("\(SharedConstants.Logging.watchPrefix): INIT - App is starting")
+        
+        // Initialize Shared CloudKit Data Manager
+        _ = SharedCloudKitManager.shared
     }
     var body: some Scene {
         WindowGroup {
             ContentView()
                 .onAppear {
-                    print("⌚ Watch App: App started")
+                    print("\(SharedConstants.Logging.watchPrefix): App started")
                 }
         }
     }

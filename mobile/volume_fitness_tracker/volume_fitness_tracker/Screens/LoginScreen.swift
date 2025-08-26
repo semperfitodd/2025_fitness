@@ -68,6 +68,12 @@ struct LoginScreen: View {
                         let components = displayName.components(separatedBy: " ")
                         userName = components.first
                     }
+                    
+                    // Save user data to CloudKit (shared with watch app)
+                    if let email = userEmail, let name = userName {
+                        CloudKitDataManager.shared.saveUserData(email: email, name: name)
+                    }
+                    
                     isAuthenticated = true
                 }
             }

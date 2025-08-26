@@ -1,5 +1,6 @@
 import SwiftUI
 import FirebaseAuth
+import GoogleSignIn
 import OSLog
 
 @MainActor
@@ -17,6 +18,11 @@ class SettingsViewModel: ObservableObject {
         
         do {
             try Auth.auth().signOut()
+            GIDSignIn.sharedInstance.signOut()
+            
+            // Clear user data from CloudKit (shared with watch app)
+            CloudKitDataManager.shared.clearUserData()
+            
             isSigningOut = false
             logger.logAuthenticationEvent("User successfully signed out", success: true)
             onSuccess()

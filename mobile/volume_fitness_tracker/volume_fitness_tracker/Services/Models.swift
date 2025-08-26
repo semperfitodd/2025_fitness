@@ -14,39 +14,7 @@ struct YearlyProgress: Identifiable, Codable {
     }
 }
 
-struct ExerciseData: Identifiable, Codable {
-    let id = UUID()
-    let exercise: String
-    let value: Int
-    
-    init(exercise: String, value: Int) {
-        self.exercise = exercise
-        self.value = value
-    }
-}
-
-// MARK: - API Response Models
-struct FitnessDataResponse: Codable {
-    let user: String
-    let exerciseData: [String: ExerciseDetail]
-    let totalLifted: Double
-    
-    enum CodingKeys: String, CodingKey {
-        case user
-        case exerciseData = "exercise_data"
-        case totalLifted = "total_lifted"
-    }
-}
-
-struct ExerciseDetail: Codable {
-    let totalVolume: Double
-    let totalReps: Double
-    
-    enum CodingKeys: String, CodingKey {
-        case totalVolume = "total_volume"
-        case totalReps = "total_reps"
-    }
-}
+// Note: ExerciseData, FitnessDataResponse, and ExerciseDetail are now defined in SharedModels.swift
 
 // MARK: - Workout Models
 struct Exercise: Identifiable, Codable {

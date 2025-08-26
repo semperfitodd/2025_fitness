@@ -6,33 +6,168 @@ struct ContentView: View {
     @State private var errorMessage: String?
     @State private var isLoading: Bool = true
     @State private var currentTab = 0
-
-    private let userEmail = "todd@bernsonfamily.com"
+    @StateObject private var cloudKitManager = SharedCloudKitManager.shared
 
     var body: some View {
-        TabView(selection: $currentTab) {
-            // Progress Overview
-            progressOverviewView
-                .tag(0)
-            
-            // Top Exercises
-            topExercisesView
-                .tag(1)
-            
-            // Daily Stats
-            dailyStatsView
-                .tag(2)
+        Group {
+            if cloudKitManager.isUserLoggedIn {
+                TabView(selection: $currentTab) {
+                    // Progress Overview
+                    progressOverviewView
+                        .tag(0)
+                    
+                    // Top Exercises
+                    topExercisesView
+                        .tag(1)
+                    
+                    // Daily Stats
+                    dailyStatsView
+                        .tag(2)
+                }
+                .tabViewStyle(PageTabViewStyle())
+            } else {
+                // Login Required View
+                loginRequiredView
+            }
         }
-        .tabViewStyle(PageTabViewStyle())
         .onAppear {
-            print("⌚ Watch App: ContentView appeared")
-            fetchData()
+            print("\(SharedConstants.Logging.watchPrefix): ContentView appeared")
+            print("\(SharedConstants.Logging.watchPrefix): CloudKit status - User logged in: \(cloudKitManager.isUserLoggedIn)")
+            print("\(SharedConstants.Logging.watchPrefix): CloudKit status - User email: \(cloudKitManager.userEmail ?? "nil")")
+            
+            // Check CloudKit status and fetch user data
+            cloudKitManager.checkCloudKitStatus()
+            
+            // Check if we have user data and fetch if needed
+            if cloudKitManager.isUserLoggedIn {
+                fetchData()
+            }
+        }
+        .onChange(of: cloudKitManager.isUserLoggedIn) { isLoggedIn in
+            if isLoggedIn {
+                print("\(SharedConstants.Logging.watchPrefix): User logged in via CloudKit")
+                fetchData()
+            } else {
+                print("\(SharedConstants.Logging.watchPrefix): User logged out via CloudKit")
+            }
         }
     }
+    
+    // MARK: - Login Required View
+    private var loginRequiredView: some View {
+        VStack(spacing: 12) {
+            // Main message
+            VStack(spacing: 8) {
+                Image(systemName: "iphone")
+                    .font(.system(size: 30))
+                    .foregroundColor(.blue)
+                
+                Text("Login Required")
+                    .font(.headline)
+                    .fontWeight(.semibold)
+                
+                Text("Please login to your iPhone app first to sync your data")
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+                    .multilineTextAlignment(.center)
+                    .padding(.horizontal)
+            }
+            
+            Spacer(minLength: 8)
+            
+            // Status information
+            VStack(spacing: 4) {
+                Text("Status: \(cloudKitStatusText)")
+                    .font(.caption2)
+                    .foregroundColor(statusColor)
+                
+                if let email = cloudKitManager.userEmail {
+                    Text("Email: \(email)")
+                        .font(.caption2)
+                        .foregroundColor(.green)
+                }
+            }
+            .padding(.horizontal)
+            
+            // Refresh button
+            Button("Refresh") {
+                print("\(SharedConstants.Logging.watchPrefix): Refreshing CloudKit data...")
+                cloudKitManager.fetchUserData()
+            }
+            .font(.system(size: 14, weight: .medium))
+            .buttonStyle(.borderedProminent)
+            
+            // Debug info (only in development)
+            #if DEBUG
+            VStack(spacing: 2) {
+                Text("Debug Info:")
+                    .font(.caption2)
+                    .foregroundColor(.orange)
+                
+                Text("Logged In: \(cloudKitManager.isUserLoggedIn ? "Yes" : "No")")
+                    .font(.caption2)
+                    .foregroundColor(.gray)
+                
+                Text("Last Sync: \(cloudKitManager.lastSyncTime?.description ?? "Never")")
+                    .font(.caption2)
+                    .foregroundColor(.gray)
+                
+                Text("Container: \(cloudKitManager.containerIdentifier ?? "nil")")
+                    .font(.caption2)
+                    .foregroundColor(.gray)
+            }
+            .padding(.top, 8)
+            #endif
+        }
+        .padding()
+    }
+    
+    // MARK: - CloudKit Status Text
+    private var cloudKitStatusText: String {
+        switch cloudKitManager.cloudKitStatus {
+        case .unknown:
+            return "Unknown"
+        case .available:
+            return "Available"
+        case .noAccount:
+            return "No iCloud"
+        case .restricted:
+            return "Restricted"
+        case .couldNotDetermine:
+            return "Could Not Determine"
+        }
+    }
+    
+    // MARK: - CloudKit Status Color
+    private var statusColor: Color {
+        switch cloudKitManager.cloudKitStatus {
+        case .available:
+            return .green
+        case .noAccount:
+            return .red
+        case .restricted:
+            return .orange
+        case .couldNotDetermine, .unknown:
+            return .yellow
+        }
+    }
+    
+
     
     // MARK: - Progress Overview Tab
     private var progressOverviewView: some View {
         VStack(spacing: 8) {
+            // Debug Info (small at top)
+            VStack(spacing: 2) {
+                Text("Email: \(cloudKitManager.userEmail ?? "nil")")
+                    .font(.caption2)
+                    .foregroundColor(.gray)
+                Text("Status: \(cloudKitStatusText)")
+                    .font(.caption2)
+                    .foregroundColor(.gray)
+            }
+            .padding(.bottom, 4)
+            
             if isLoading {
                 ProgressView("Loading...")
                     .progressViewStyle(CircularProgressViewStyle())
@@ -178,7 +313,7 @@ struct ContentView: View {
     // MARK: - Computed Properties
     private var progressPercentage: Double {
         guard totalLifted > 0 else { return 0 }
-        return (Double(totalLifted) / Double(WatchConstants.yearlyGoalLbs)) * 100.0
+        return (Double(totalLifted) / Double(SharedConstants.yearlyGoalLbs)) * 100.0
     }
     
     private var progressColor: Color {
@@ -198,7 +333,7 @@ struct ContentView: View {
     }
     
     private var dailyTarget: Double {
-        return Double(WatchConstants.yearlyGoalLbs) / Double(WatchConstants.daysInYear)
+        return Double(SharedConstants.yearlyGoalLbs) / Double(SharedConstants.daysInYear)
     }
     
     private var currentDailyAverage: Double {
@@ -257,13 +392,20 @@ struct ContentView: View {
         }
     }
     
+
+    
     // MARK: - Data Fetching
     private func fetchData() {
-        print("⌚ Watch App: Starting fetchData()")
+        guard let email = cloudKitManager.userEmail else {
+            print("\(SharedConstants.Logging.watchPrefix): No user email available")
+            return
+        }
+        
+        print("\(SharedConstants.Logging.watchPrefix): Starting fetchData() for \(email)")
         isLoading = true
         errorMessage = nil
         
-        WatchAPIClient.fetchData(for: userEmail) { result in
+        WatchAPIClient.fetchData(for: email) { result in
             DispatchQueue.main.async {
                 isLoading = false
                 switch result {

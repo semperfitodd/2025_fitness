@@ -8,6 +8,9 @@ struct FitnessApp: App {
     
     init() {
         FirebaseApp.configure()
+        
+        // Initialize Shared CloudKit Data Manager
+        _ = SharedCloudKitManager.shared
     }
     
     var body: some Scene {
@@ -16,6 +19,8 @@ struct FitnessApp: App {
                 LoginScreen(onLoginSuccess: { email, name in
                     authManager.userEmail = email
                     authManager.userName = name ?? ""
+                    // Save user data to CloudKit for watch app
+                    SharedCloudKitManager.shared.saveUserData(email: email, name: name ?? "")
                 })
             } else {
                 ContentView(userEmail: authManager.userEmail, userName: authManager.userName, onSignOut: {
@@ -76,6 +81,8 @@ class AuthenticationManager: ObservableObject {
                                     let components = displayName.components(separatedBy: " ")
                                     self?.userName = components.first ?? ""
                                 }
+                                // Save user data to CloudKit for watch app
+                                SharedCloudKitManager.shared.saveUserData(email: email, name: self?.userName ?? "")
                                 self?.logger.logAuthenticationEvent("Firebase Auth Success", userEmail: email, success: true)
                             }
                         }
@@ -96,6 +103,8 @@ class AuthenticationManager: ObservableObject {
             
             userEmail = ""
             userName = ""
+            // Clear user data from CloudKit for watch app
+            SharedCloudKitManager.shared.clearUserData()
             logger.logAuthenticationEvent("Sign Out", userEmail: nil, success: true)
             
         } catch {

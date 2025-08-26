@@ -39,6 +39,16 @@ struct PieChartWrapper: UIViewRepresentable {
         pieChart.legend.form = .none
         pieChart.backgroundColor = UIColor.clear
         pieChart.isOpaque = false
+        
+        // Set hole color to match system appearance (dark mode support)
+        if #available(iOS 13.0, *) {
+            pieChart.holeColor = UIColor.systemBackground
+            pieChart.transparentCircleColor = UIColor.systemBackground
+        } else {
+            pieChart.holeColor = UIColor.white
+            pieChart.transparentCircleColor = UIColor.white
+        }
+        
         return pieChart
     }
 
